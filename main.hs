@@ -1,10 +1,8 @@
 module Main (main) where
- 
-import Data.Maybe
+
 import Control.Applicative
 import Control.Monad
 import Control.Concurrent
-import Control.Concurrent.STM.TChan
 import Control.Concurrent.STM.TBQueue
 import Control.Concurrent.STM.TQueue
 import GHC.Conc
@@ -12,16 +10,14 @@ import System.Random
 
 data BarberShop = BarberShop {
     seats :: TVar Int,
-    queue :: TBQueue Int,
-    slog :: TQueue String
+    queue :: TBQueue Int
 }
 
 initShop :: Int -> STM (BarberShop)
 initShop seats = do 
     s <- newTVar seats
     q <- newTBQueue seats
-    l <- newTQueue
-    return BarberShop { seats = s, queue = q, slog = l }
+    return BarberShop { seats = s, queue = q}
 
 debug msg c = putStrLn (msg ++ (take (45-(length msg)) (repeat ' ')) ++ (show c))
 
