@@ -3,4 +3,5 @@ haskell-sleeping-barber
 
 Sleeping barber problem implemented in Haskell using STM
 
-http://en.wikipedia.org/wiki/Sleeping_barber_problem
+Short description about the implementation as an essay:
+http://quantumstories.com/2013/11/26/41/
